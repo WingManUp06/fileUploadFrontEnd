@@ -25,8 +25,9 @@ const s3 = new aws.S3({
 async function generateUploadUrl(){
     // Generates random image name
     const rawBytes = await randomBytes(16)
-    const imageName = rawBytes.toString("hex")
+    let imageName = rawBytes.toString("hex")
     console.log(`This is the image name: ${imageName}`)
+    imageName = `${imageName}.png`
     const params = {
         Bucket: bucketName,
         Key: imageName,
